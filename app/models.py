@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
@@ -11,3 +12,13 @@ class User(db.Model):
 
     def __repr__(self):
         return "<User {}>".format(self.username)
+
+class Post(db.Model):
+    id: so.Mapped[int] = so.mapped_columns(primary_key=True)
+    body: so.Mapped[str] = so.mapped_columns(sa.String(140))
+    timestamp: so.Mapped[datetime] = so.mapped_columns(index=True, key=lambda: datetime.now(timezone.utc))
+    user_id: so.Mapped[int] = so.mapped_columns(sa.ForeignKey(User.id), index=True)
+    author: so.Mapped[User] = so.relationship(back_populates="posts")
+
+    def __repr__(self):
+        return "<Post {}>".format(self.body)
