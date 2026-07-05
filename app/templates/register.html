@@ -8,36 +8,36 @@
         <br>
         {{ form.username(size=32) }}
         <br>
-        {{% for error in form.username.errors %}}
+        {% for error in form.username.errors %}
         <span style="color:red;">[{{ error }}]</span>
-        {{% endfor %}}
+        {% endfor %}
     </p>
     <p>
         {{ form.email.label }}
         <br>
         {{ form.email(size=32) }}
         <br>
-        {{% for error in form.email.errors %}}
+        {% for error in form.email.errors %}
         <span style="color:red;">[{{ error }}]</span>
-        {{% endfor %}}
+        {% endfor %}
     </p>
     <p>
         {{ form.password.label }}
         <br>
         {{ form.password(size=32) }}
         <br>
-        {{% for error in form.password.errors %}}
+        {% for error in form.password.errors %}
         <span style="color:red;">[{{ error }}]</span>
-        {{% endfor %}}
+        {% endfor %}
     </p>
     <p>
         {{ form.re_password.label }}
         <br>
-        {{ form.re-password(size=32) }}
+        {{ form.re_password(size=32) }}
         <br>
-        {{% for error in form.re-password.errors %}}
+        {% for error in form.re_password.errors %}
         <span style="color:red;">[{{ error }}]</span>
-        {{% endfor %}}
+        {% endfor %}
     </p>
     <p>
         {{ form.submit() }}
