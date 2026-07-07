@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm
-from app.forms import RegForm
+from app.forms import LoginForm, RegForm, EditProfileForm
 from app.models import User
 import sqlalchemy as sa
 from flask_login import current_user, login_user, logout_user, login_required
@@ -82,4 +81,9 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
+
+@app.route("/edit_profile", methods=["GET", "POST"])
+@login_required
+def edit_profile():
+    pass
 
